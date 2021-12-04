@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello world!</h1>
+    <form method="POST">
+        <input type="text" name="url" />
+        <input type="submit" />
+    </form>
+    {% if url %}
+        <h2>{{ title }}</h2>
+        <img src="{{ img }}" alt="thumbnail">
+        <p>{{ url }}</p>
+        <h3>Audio</h3>
+        <ul>
+            {% for stream in size %}
+                {% if stream.type == 'audio' %}
+                    <li>{{ stream.res }} {{ stream.type_deco }} {{ stream.size }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <h3>Video</h3>
+        <ul>
+            {% for stream in size %}
+            {% if stream.type == 'video' %}
+                <li>{{ stream.res }} {{ stream.type_deco }} {{ stream.size }}</li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
